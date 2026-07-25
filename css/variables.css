@@ -1,0 +1,123 @@
+/* ==========================================================================
+   GraLex Logistique — Design Tokens
+   The single source of truth for color, type, spacing, elevation & motion.
+   ========================================================================== */
+
+:root {
+  /* ---- Brand palette ---------------------------------------------------- */
+  --navy-900: #0b1120;
+  --navy-800: #0f172a; /* primary */
+  --navy-700: #1e293b;
+  --navy-600: #334155;
+
+  --blue-600: #2563eb; /* electric blue */
+  --blue-500: #3b82f6;
+  --blue-400: #60a5fa;
+  --blue-050: #eff6ff;
+
+  --orange-600: #ea580c;
+  --orange-500: #f97316; /* accent */
+  --orange-400: #fb923c;
+
+  --green-600: #16a34a; /* success */
+  --green-500: #22c55e;
+
+  --white: #ffffff;
+  --gray-050: #f8fafc; /* light gray surface */
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+
+  --ink: #111827; /* body text */
+  --ink-soft: #334155;
+  --ink-muted: #64748b;
+
+  /* ---- Semantic tokens -------------------------------------------------- */
+  --bg: var(--white);
+  --bg-alt: var(--gray-050);
+  --surface: var(--white);
+  --text: var(--ink);
+  --text-soft: var(--ink-soft);
+  --text-muted: var(--ink-muted);
+  --border: var(--gray-200);
+  --brand: var(--blue-600);
+  --brand-ink: var(--navy-800);
+  --accent: var(--orange-500);
+
+  /* ---- Gradients -------------------------------------------------------- */
+  --grad-brand: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  --grad-sunset: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  --grad-hero: linear-gradient(120deg, rgba(11,17,32,0.92) 0%, rgba(15,23,42,0.72) 45%, rgba(37,99,235,0.35) 100%);
+  --grad-mesh: radial-gradient(1200px 600px at 10% -10%, rgba(37,99,235,0.25), transparent 60%),
+               radial-gradient(900px 500px at 90% 0%, rgba(249,115,22,0.18), transparent 55%),
+               radial-gradient(1000px 700px at 50% 120%, rgba(22,163,74,0.14), transparent 60%);
+  --grad-glass: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
+
+  /* ---- Typography ------------------------------------------------------- */
+  --font-head: "Poppins", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  --fs-hero: clamp(2.6rem, 6vw, 5rem);
+  --fs-h1: clamp(2.2rem, 4.5vw, 3.5rem);
+  --fs-h2: clamp(1.8rem, 3.4vw, 2.75rem);
+  --fs-h3: clamp(1.3rem, 2.2vw, 1.75rem);
+  --fs-lead: clamp(1.05rem, 1.4vw, 1.3rem);
+  --fs-body: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.75rem;
+
+  --lh-tight: 1.08;
+  --lh-snug: 1.28;
+  --lh-body: 1.7;
+
+  --ls-tight: -0.02em;
+  --ls-wide: 0.14em;
+
+  /* ---- Spacing scale (8pt) ---------------------------------------------- */
+  --sp-1: 0.25rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.5rem;
+  --sp-6: 2rem;
+  --sp-7: 3rem;
+  --sp-8: 4rem;
+  --sp-9: 6rem;
+  --sp-10: 8rem;
+
+  --container: 1200px;
+  --container-wide: 1360px;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+
+  /* ---- Radii ------------------------------------------------------------ */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+
+  /* ---- Elevation -------------------------------------------------------- */
+  --sh-xs: 0 1px 2px rgba(15,23,42,0.06);
+  --sh-sm: 0 2px 8px rgba(15,23,42,0.08);
+  --sh-md: 0 10px 30px rgba(15,23,42,0.10);
+  --sh-lg: 0 24px 60px rgba(15,23,42,0.16);
+  --sh-brand: 0 18px 40px rgba(37,99,235,0.30);
+  --sh-accent: 0 18px 40px rgba(249,115,22,0.30);
+  --ring: 0 0 0 4px rgba(37,99,235,0.18);
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast: 160ms;
+  --t: 280ms;
+  --t-slow: 520ms;
+
+  --nav-h: 76px;
+  --z-nav: 100;
+  --z-overlay: 200;
+  --z-loader: 900;
+  --z-top: 999;
+}

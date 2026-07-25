@@ -1,0 +1,153 @@
+/* ==========================================================================
+   GraLex Logistique — Responsive
+   Mobile-first-friendly overrides. Load LAST so it wins over components.
+   Breakpoints: 1440 · 1200 · 1080 · 992 · 900 · 768 · 640 · 480 · 380
+   Plus: touch, landscape-phone, and reduced-data considerations.
+   ========================================================================== */
+
+/* Global safety: never allow horizontal overflow, always fluid media */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, svg, video, iframe { max-width: 100%; }
+
+/* ---- Ultrawide (>=1440) ------------------------------------------------ */
+@media (min-width: 1440px) {
+  .container { max-width: 1280px; }
+  .hero__inner { gap: var(--sp-10); }
+}
+
+/* ---- Large laptop (<=1200) --------------------------------------------- */
+@media (max-width: 1200px) {
+  .hero__inner { gap: var(--sp-6); }
+}
+
+/* ---- Laptop (<=1080) --------------------------------------------------- */
+@media (max-width: 1080px) {
+  .cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .footer__grid { grid-template-columns: 1.4fr 1fr 1.4fr; }
+  .footer__contact-col { grid-column: 1 / -1; }
+  .masonry { columns: 3; }
+  .quote-grid { grid-template-columns: 1fr; }
+  .quote-aside { position: static; grid-template-columns: 1fr 1fr; display: grid; }
+}
+
+/* ---- Small laptop / large tablet (<=992) ------------------------------- */
+@media (max-width: 992px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .hero__panel { max-width: 460px; }
+  .hero__content { max-width: 100%; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .masonry { columns: 2; }
+}
+
+/* ---- Tablet (<=900) ---------------------------------------------------- */
+@media (max-width: 900px) {
+  /* Nav collapses to hamburger */
+  .nav__links, .nav__cta { display: none; }
+  .nav__toggle { display: flex; }
+
+  .cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .stats { grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
+
+  .split { grid-template-columns: 1fr !important; gap: var(--sp-7); }
+  .split__media { order: -1; }
+  .split__badge { left: auto; right: 1rem; }
+
+  .footer__grid { grid-template-columns: 1fr 1fr; }
+  .footer__about { grid-column: 1 / -1; }
+
+  .track-summary__grid { grid-template-columns: repeat(2, 1fr); }
+  .process__line { display: none; }
+}
+
+/* ---- Small tablet / large phone (<=768) -------------------------------- */
+@media (max-width: 768px) {
+  :root { --nav-h: 68px; }
+
+  .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; }
+  .process__grid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
+
+  .hero { min-height: auto; padding-block: calc(var(--nav-h) + var(--sp-7)) var(--sp-8); }
+  .hero__stats { grid-template-columns: repeat(3, 1fr); }
+  .scroll-cue { display: none; }
+
+  .quote-aside { grid-template-columns: 1fr; }
+  .blog-toolbar { flex-direction: column; align-items: stretch; }
+  .search-box { max-width: 100%; }
+
+  .footer__bottom { flex-direction: column; text-align: center; }
+}
+
+/* ---- Phone (<=640) ----------------------------------------------------- */
+@media (max-width: 640px) {
+  .masonry { columns: 1; }
+  .process__grid { grid-template-columns: 1fr; }
+  .track-summary__grid { grid-template-columns: 1fr 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+
+  .slide__card { padding: var(--sp-5) var(--sp-4); }
+  .cta-band { padding: var(--sp-7) var(--sp-5); }
+
+  .lightbox__close, .lightbox__nav { width: 44px; height: 44px; }
+  .lightbox__nav.prev { left: 0.5rem; }
+  .lightbox__nav.next { right: 0.5rem; }
+}
+
+/* ---- Small phone (<=480) ----------------------------------------------- */
+@media (max-width: 480px) {
+  /* Full-width primary actions */
+  .hero__actions { flex-direction: column; width: 100%; }
+  .hero__actions .btn { width: 100%; }
+  .cta-band__actions { flex-direction: column; }
+  .cta-band__actions .btn { width: 100%; }
+
+  .stats { grid-template-columns: 1fr 1fr; }
+  .hero__stats { grid-template-columns: 1fr; text-align: left; }
+  .hero__stats .stat { display: flex; align-items: baseline; gap: var(--sp-3); }
+
+  .track-form { flex-direction: column; }
+  .track-form .btn { width: 100%; }
+
+  .footer__grid { grid-template-columns: 1fr; }
+  .footer__contact li { font-size: 0.95rem; }
+
+  .to-top { right: 1rem; bottom: 1rem; width: 46px; height: 46px; }
+  .wa-float { left: 1rem; bottom: 1rem; width: 52px; height: 52px; }
+
+  .section-head { margin-bottom: var(--sp-6); }
+  .breadcrumb { font-size: var(--fs-xs); }
+}
+
+/* ---- Very small phone (<=380) ------------------------------------------ */
+@media (max-width: 380px) {
+  .stats { grid-template-columns: 1fr; }
+  .brand { font-size: 1.15rem; }
+  .track-summary__grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Landscape phones (short viewports) -------------------------------- */
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero { min-height: auto; padding-block: calc(var(--nav-h) + 1.5rem) 2.5rem; }
+  .scroll-cue { display: none; }
+  .mobile-menu { padding-top: calc(var(--nav-h) + 0.5rem); }
+  .mobile-menu a { font-size: 1.1rem; padding: 0.7rem 0; }
+}
+
+/* ---- Coarse pointer (touch): larger tap targets, no hover tilt --------- */
+@media (hover: none) and (pointer: coarse) {
+  .btn { min-height: 46px; }
+  .nav__toggle { width: 46px; height: 46px; }
+  .filter-btn, .pagination button { min-height: 44px; }
+  /* Disable transform-based hover states that stick on touch */
+  .card:hover, .lift:hover, .feature:hover, .value:hover { transform: none; }
+  [data-tilt] { transform: none !important; }
+  /* Reveal captions by default (no hover to trigger them) */
+  .masonry__item::after { transform: translateY(0); background: linear-gradient(transparent, rgba(11,17,32,0.7)); }
+}
+
+/* ---- Print ------------------------------------------------------------- */
+@media print {
+  .nav, .to-top, .wa-float, .loader, .footer, .scroll-cue, .mobile-menu { display: none !important; }
+  body { color: #000; }
+  .pagehero, .bg-ink { background: #fff !important; color: #000 !important; }
+  .pagehero h1, .bg-ink h2 { color: #000 !important; }
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog — GraLex Logistique</title>
+<meta name="description" content="Logistics insights, guides and news from the GraLex Logistique team." />
+<meta name="theme-color" content="#0f172a" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Blog — GraLex Logistique" />
+<meta property="og:description" content="Logistics insights, guides and news from the GraLex Logistique team." />
+<meta property="og:image" content="images/hero/hero.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Cpath d='M6 20l6-9 5 6 3-4 6 7z' fill='%23f97316'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/variables.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/animations.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+<div class="loader" aria-hidden="true"><div class="loader__mark"><div class="loader__logo">Gra<span>Lex</span></div><div class="loader__bar"></div></div></div>
+<header class="nav solid scrolled" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="brand" aria-label="GraLex Logistique home"><span class="brand__logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h1"/><path d="M14 9h4l4 4v4a1 1 0 0 1-1 1h-1"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>Gra<span>Lex</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="tracking.html">Track</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="blog.html" aria-current="page">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <a href="tracking.html" class="btn btn-outline">Track Shipment</a>
+      <a href="quote.html" class="btn btn-accent">Get a Quote</a>
+    </div>
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home <span>&rarr;</span></a>
+  <a href="about.html">About <span>&rarr;</span></a>
+  <a href="services.html">Services <span>&rarr;</span></a>
+  <a href="tracking.html">Track <span>&rarr;</span></a>
+  <a href="gallery.html">Gallery <span>&rarr;</span></a>
+  <a href="blog.html">Blog <span>&rarr;</span></a>
+  <a href="contact.html">Contact <span>&rarr;</span></a>
+  <div class="mobile-menu__cta">
+    <a href="quote.html" class="btn btn-accent btn-block">Get a Quote</a>
+    <a href="tracking.html" class="btn btn-ghost btn-block">Track Shipment</a>
+  </div>
+</div>
+<section class="pagehero">
+  <div class="pagehero__img"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1600&q=80" alt="" data-label="GraLex Logistique" /></div>
+  <div class="floaties" aria-hidden="true"><span class="floaty floaty--1"></span><span class="floaty floaty--3"></span></div>
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Blog</span></div>
+    <h1 data-reveal="up">Insights from the road</h1>
+    <p class="lead" data-reveal="up">Guides, industry trends and stories from the GraLex team — everything logistics, made simple.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="blog-toolbar" data-reveal="up">
+      <div class="search-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input type="search" id="blog-search" placeholder="Search articles..." aria-label="Search articles" /></div>
+      <div class="chips" id="blog-cats"><button class="filter-btn active" data-cat="All">All</button><button class="filter-btn" data-cat="Logistics">Logistics</button><button class="filter-btn" data-cat="Guides">Guides</button><button class="filter-btn" data-cat="Company">Company</button></div>
+    </div>
+    <div class="grid cols-3" id="blog-grid"><article class="card post-card lift" data-cat="Logistics" data-title="the future of cross-border trade in west africa" data-reveal="up">
+      <div class="post-card__media"><img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=800&q=80" alt="The future of cross-border trade in West Africa" data-label="Logistics" /></div>
+      <div class="post-card__body"><span class="tag">Logistics</span>
+        <div class="post-card__meta" style="margin-top:.75rem"><span>Jul 12, 2026</span><span>&bull;</span><span>6 min read</span></div>
+        <h3>The future of cross-border trade in West Africa</h3><p>How digital logistics is reshaping the Benin–Nigeria corridor and unlocking new opportunities for businesses.</p>
+        <a href="#" class="link-arrow" onclick="return false">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </article><article class="card post-card lift" data-cat="Guides" data-title="5 ways to cut your shipping costs without cutting corners" data-reveal="up">
+      <div class="post-card__media"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80" alt="5 ways to cut your shipping costs without cutting corners" data-label="Guides" /></div>
+      <div class="post-card__body"><span class="tag">Guides</span>
+        <div class="post-card__meta" style="margin-top:.75rem"><span>Jul 5, 2026</span><span>&bull;</span><span>4 min read</span></div>
+        <h3>5 ways to cut your shipping costs without cutting corners</h3><p>Practical strategies to optimise your supply chain and keep more margin in your pocket.</p>
+        <a href="#" class="link-arrow" onclick="return false">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </article><article class="card post-card lift" data-cat="Company" data-title="inside the gralex fleet: how we keep africa moving" data-reveal="up">
+      <div class="post-card__media"><img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1200&q=80" alt="Inside the GraLex fleet: how we keep Africa moving" data-label="Company" /></div>
+      <div class="post-card__body"><span class="tag">Company</span>
+        <div class="post-card__meta" style="margin-top:.75rem"><span>Jun 28, 2026</span><span>&bull;</span><span>5 min read</span></div>
+        <h3>Inside the GraLex fleet: how we keep Africa moving</h3><p>A behind-the-scenes look at the vehicles, technology and people powering our deliveries.</p>
+        <a href="#" class="link-arrow" onclick="return false">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </article><article class="card post-card lift" data-cat="Guides" data-title="warehousing 101: when to outsource your storage" data-reveal="up">
+      <div class="post-card__media"><img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=80" alt="Warehousing 101: when to outsource your storage" data-label="Guides" /></div>
+      <div class="post-card__body"><span class="tag">Guides</span>
+        <div class="post-card__meta" style="margin-top:.75rem"><span>Jun 20, 2026</span><span>&bull;</span><span>7 min read</span></div>
+        <h3>Warehousing 101: when to outsource your storage</h3><p>Signs your business has outgrown the back room — and what a fulfilment partner can do for you.</p>
+        <a href="#" class="link-arrow" onclick="return false">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </article><article class="card post-card lift" data-cat="Logistics" data-title="last-mile delivery: solving the hardest part of the journey" data-reveal="up">
+      <div class="post-card__media"><img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?auto=format&fit=crop&w=800&q=80" alt="Last-mile delivery: solving the hardest part of the journey" data-label="Logistics" /></div>
+      <div class="post-card__body"><span class="tag">Logistics</span>
+        <div class="post-card__meta" style="margin-top:.75rem"><span>Jun 11, 2026</span><span>&bull;</span><span>5 min read</span></div>
+        <h3>Last-mile delivery: solving the hardest part of the journey</h3><p>Why the final mile is the most expensive and complex stage — and how we crack it.</p>
+        <a href="#" class="link-arrow" onclick="return false">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </article><article class="card post-card lift" data-cat="Company" data-title="sustainability on the road: our greener logistics roadmap" data-reveal="up">
+      <div class="post-card__media"><img src="https://images.unsplash.com/photo-1473042904451-00171c69419d?auto=format&fit=crop&w=800&q=80" alt="Sustainability on the road: our greener logistics roadmap" data-label="Company" /></div>
+      <div class="post-card__body"><span class="tag">Company</span>
+        <div class="post-card__meta" style="margin-top:.75rem"><span>Jun 2, 2026</span><span>&bull;</span><span>4 min read</span></div>
+        <h3>Sustainability on the road: our greener logistics roadmap</h3><p>The steps GraLex is taking to reduce emissions across our growing network.</p>
+        <a href="#" class="link-arrow" onclick="return false">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </article><article class="card post-card lift" data-cat="Guides" data-title="how to pack fragile goods for a long journey" data-reveal="up">
+      <div class="post-card__media"><img src="https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=800&q=80" alt="How to pack fragile goods for a long journey" data-label="Guides" /></div>
+      <div class="post-card__body"><span class="tag">Guides</span>
+        <div class="post-card__meta" style="margin-top:.75rem"><span>May 24, 2026</span><span>&bull;</span><span>3 min read</span></div>
+        <h3>How to pack fragile goods for a long journey</h3><p>Expert tips to make sure delicate cargo arrives in perfect condition, every time.</p>
+        <a href="#" class="link-arrow" onclick="return false">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </article><article class="card post-card lift" data-cat="Logistics" data-title="customs made simple: a small business guide" data-reveal="up">
+      <div class="post-card__media"><img src="https://images.unsplash.com/photo-1591768575198-88dac53fbd0a?auto=format&fit=crop&w=800&q=80" alt="Customs made simple: a small business guide" data-label="Logistics" /></div>
+      <div class="post-card__body"><span class="tag">Logistics</span>
+        <div class="post-card__meta" style="margin-top:.75rem"><span>May 15, 2026</span><span>&bull;</span><span>8 min read</span></div>
+        <h3>Customs made simple: a small business guide</h3><p>Demystifying documentation, duties and clearance for first-time exporters.</p>
+        <a href="#" class="link-arrow" onclick="return false">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </article><article class="card post-card lift" data-cat="Company" data-title="meet the team keeping your deliveries on track" data-reveal="up">
+      <div class="post-card__media"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80" alt="Meet the team keeping your deliveries on track" data-label="Company" /></div>
+      <div class="post-card__body"><span class="tag">Company</span>
+        <div class="post-card__meta" style="margin-top:.75rem"><span>May 6, 2026</span><span>&bull;</span><span>4 min read</span></div>
+        <h3>Meet the team keeping your deliveries on track</h3><p>The dispatchers, drivers and support staff who make GraLex tick.</p>
+        <a href="#" class="link-arrow" onclick="return false">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </article></div>
+    <p class="no-results hidden" id="no-results">No articles match your search. Try a different keyword.</p>
+    <div class="pagination" id="pagination"></div>
+  </div>
+</section>
+
+<section class="section bg-alt">
+  <div class="container">
+    <div class="cta-band animated-gradient" data-reveal="zoom"><div class="cta-band__mesh"></div>
+      <h2>Never miss an update</h2>
+      <p>Subscribe for logistics insights, guides and GraLex news — straight to your inbox.</p>
+      <form class="newsletter" style="max-width:420px;margin:0 auto" aria-label="Subscribe">
+        <input type="email" placeholder="Your email" aria-label="Email" required style="background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.3);color:#fff" />
+        <button type="submit" aria-label="Subscribe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var grid=document.getElementById('blog-grid');
+  var cards=[].slice.call(grid.querySelectorAll('.post-card'));
+  var search=document.getElementById('blog-search');
+  var cats=[].slice.call(document.querySelectorAll('#blog-cats .filter-btn'));
+  var noRes=document.getElementById('no-results');
+  var pag=document.getElementById('pagination');
+  var PER=6, page=1, cat='All', q='';
+  function filtered(){return cards.filter(function(c){
+    var okCat = cat==='All' || c.dataset.cat===cat;
+    var okQ = !q || c.dataset.title.indexOf(q)>-1;
+    return okCat && okQ;
+  })}
+  function render(){
+    var list=filtered();
+    cards.forEach(function(c){c.classList.add('hide')});
+    var pages=Math.max(1,Math.ceil(list.length/PER));
+    if(page>pages)page=pages;
+    list.slice((page-1)*PER,page*PER).forEach(function(c){c.classList.remove('hide')});
+    noRes.classList.toggle('hidden', list.length>0);
+    pag.innerHTML='';
+    if(list.length>PER){
+      var mk=function(label,p,dis,act){var b=document.createElement('button');b.textContent=label;b.disabled=dis;if(act)b.classList.add('active');b.addEventListener('click',function(){page=p;render();window.scrollTo({top:grid.offsetTop-120,behavior:'smooth'});});return b;};
+      pag.appendChild(mk('‹',page-1,page===1));
+      for(var i=1;i<=pages;i++)pag.appendChild(mk(i,i,false,i===page));
+      pag.appendChild(mk('›',page+1,page===pages));
+    }
+  }
+  cats.forEach(function(b){b.addEventListener('click',function(){cats.forEach(function(x){x.classList.remove('active')});b.classList.add('active');cat=b.dataset.cat;page=1;render();})});
+  search.addEventListener('input',function(){q=search.value.trim().toLowerCase();page=1;render();});
+  render();
+})();
+</script>
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <a href="index.html" class="brand"><span class="brand__logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h1"/><path d="M14 9h4l4 4v4a1 1 0 0 1-1 1h-1"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>Gra<span>Lex</span></a>
+        <p>Fast, secure and reliable logistics across Benin, Nigeria and the wider West African corridor.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/gralex_logistique/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/2290100000000" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.5.1-.7.3-.7.8-1 1.7-1 2.8.1 1.3.9 2.5 1 2.7.1.2 1.8 3 4.5 4.1 2.7 1.1 2.7.8 3.2.7.5 0 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4M12 21.5c-1.7 0-3.3-.5-4.7-1.3L3 21l1.3-4.2C3.4 15.3 3 13.7 3 12 3 7 7 3 12 3s9 4 9 9-4 9.5-9 9.5"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Company</h4><ul class="footer__links"><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Services</h4><ul class="footer__links"><li><a href="services.html">Food Delivery</a></li><li><a href="services.html">Local Dispatch</a></li><li><a href="services.html">International Shipping</a></li><li><a href="services.html">Cross-Border</a></li><li><a href="services.html">Warehousing</a></li></ul></div>
+      <div class="footer__contact-col">
+        <h4>Get in touch</h4>
+        <ul class="footer__contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Cotonou, Littoral — Benin</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg><a href="tel:+2290100000000">+229 01 00 00 00 00</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg><a href="mailto:hello@gralexlogistique.com">hello@gralexlogistique.com</a></li>
+        </ul>
+        <form class="newsletter" aria-label="Newsletter signup"><input type="email" placeholder="Your email" aria-label="Email address" required /><button type="submit" aria-label="Subscribe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button></form>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; <span data-year>2026</span> GraLex Logistique. All rights reserved.</p>
+      <p style="display:flex;gap:1.25rem;flex-wrap:wrap"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="contact.html">Support</a></p>
+    </div>
+  </div>
+</footer>
+<a class="wa-float" href="https://wa.me/2290100000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.5.1-.7.3-.7.8-1 1.7-1 2.8.1 1.3.9 2.5 1 2.7.1.2 1.8 3 4.5 4.1 2.7 1.1 2.7.8 3.2.7.5 0 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4M12 21.5c-1.7 0-3.3-.5-4.7-1.3L3 21l1.3-4.2C3.4 15.3 3 13.7 3 12 3 7 7 3 12 3s9 4 9 9-4 9.5-9 9.5"/></svg></a>
+<button class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg></button>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+</body>
+</html>

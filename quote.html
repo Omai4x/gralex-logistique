@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Get a Quote — GraLex Logistique</title>
+<meta name="description" content="Request a fast, tailored logistics quote from GraLex Logistique for delivery, freight, warehousing and more." />
+<meta name="theme-color" content="#0f172a" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Get a Quote — GraLex Logistique" />
+<meta property="og:description" content="Request a fast, tailored logistics quote from GraLex Logistique for delivery, freight, warehousing and more." />
+<meta property="og:image" content="images/hero/hero.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232563eb'/%3E%3Cpath d='M6 20l6-9 5 6 3-4 6 7z' fill='%23f97316'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/variables.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/animations.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+<div class="loader" aria-hidden="true"><div class="loader__mark"><div class="loader__logo">Gra<span>Lex</span></div><div class="loader__bar"></div></div></div>
+<header class="nav solid scrolled" id="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="brand" aria-label="GraLex Logistique home"><span class="brand__logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h1"/><path d="M14 9h4l4 4v4a1 1 0 0 1-1 1h-1"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>Gra<span>Lex</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="tracking.html">Track</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav__cta">
+      <a href="tracking.html" class="btn btn-outline">Track Shipment</a>
+      <a href="quote.html" class="btn btn-accent">Get a Quote</a>
+    </div>
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home <span>&rarr;</span></a>
+  <a href="about.html">About <span>&rarr;</span></a>
+  <a href="services.html">Services <span>&rarr;</span></a>
+  <a href="tracking.html">Track <span>&rarr;</span></a>
+  <a href="gallery.html">Gallery <span>&rarr;</span></a>
+  <a href="blog.html">Blog <span>&rarr;</span></a>
+  <a href="contact.html">Contact <span>&rarr;</span></a>
+  <div class="mobile-menu__cta">
+    <a href="quote.html" class="btn btn-accent btn-block">Get a Quote</a>
+    <a href="tracking.html" class="btn btn-ghost btn-block">Track Shipment</a>
+  </div>
+</div>
+<section class="pagehero">
+  <div class="pagehero__img"><img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1600&q=80" alt="" data-label="GraLex Logistique" /></div>
+  <div class="floaties" aria-hidden="true"><span class="floaty floaty--1"></span><span class="floaty floaty--3"></span></div>
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Quote</span></div>
+    <h1 data-reveal="up">Get an instant quote</h1>
+    <p class="lead" data-reveal="up">Tell us about your shipment and we'll get back with a tailored price — usually within the hour.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container quote-grid">
+    <div data-reveal="up">
+      <form class="quote-form" data-validate data-success="Quote request received! Our team will reach out shortly.">
+        <div class="form-row">
+          <div class="field"><label>Pickup address <span class="req">*</span></label><input type="text" name="pickup" required placeholder="Street, city" /></div>
+          <div class="field"><label>Destination <span class="req">*</span></label><input type="text" name="destination" required placeholder="Street, city / country" /></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Package type <span class="req">*</span></label>
+            <select name="type" required><option value="">Select type</option><option>Documents</option><option>Parcel / Box</option><option>Food / Perishable</option><option>Fragile goods</option><option>Bulk / Pallet</option><option>Other</option></select></div>
+          <div class="field"><label>Weight (kg) <span class="req">*</span></label><input type="number" name="weight" required min="0" step="0.1" placeholder="e.g. 12.5" /></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Vehicle</label>
+            <select name="vehicle"><option value="">No preference</option><option>Motorbike</option><option>Van</option><option>Truck</option><option>Refrigerated</option></select></div>
+          <div class="field"><label>Delivery speed <span class="req">*</span></label>
+            <select name="speed" required><option value="">Select speed</option><option>Same-day (express)</option><option>Next-day</option><option>Standard (2-4 days)</option><option>Economy</option></select></div>
+        </div>
+        <hr style="border:0;border-top:1px solid var(--border);margin:1.5rem 0" />
+        <div class="form-row">
+          <div class="field"><label>Full name <span class="req">*</span></label><input type="text" name="name" required minlength="2" placeholder="Your name" /></div>
+          <div class="field"><label>Phone <span class="req">*</span></label><input type="tel" name="phone" required data-rule="phone" placeholder="+229 ..." /></div>
+        </div>
+        <div class="field"><label>Email <span class="req">*</span></label><input type="email" name="email" required placeholder="you@company.com" /></div>
+        <div class="field"><label>Notes</label><textarea name="notes" placeholder="Anything else we should know?"></textarea></div>
+        <button type="submit" class="btn btn-accent btn-lg btn-block">Request my quote</button>
+        <p class="form-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg> Your details are safe with us and never shared.</p>
+      </form>
+      <div class="form-success hidden">
+        <div class="form-success__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h2>Thank you!</h2>
+        <p class="lead">Your quote request is in. A GraLex specialist will be in touch shortly with your tailored price.</p>
+        <a href="index.html" class="btn btn-primary mt-6">Back to home</a>
+      </div>
+    </div>
+
+    <aside class="quote-aside">
+      <div class="aside-card">
+        <h3>Why request a quote?</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Transparent, all-in pricing — no surprises.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Fast turnaround, usually within the hour.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Advice on the best service for your needs.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Dedicated support from booking to delivery.</span></li>
+        </ul>
+      </div>
+      <div class="aside-card" style="background:var(--grad-brand)">
+        <h3>Prefer to talk?</h3>
+        <p style="color:rgba(255,255,255,.9)">Call our team and we'll quote you over the phone.</p>
+        <a href="tel:+2290100000000" class="btn btn-ghost btn-block mt-6" style="border-color:rgba(255,255,255,.5)">+229 01 00 00 00 00</a>
+      </div>
+    </aside>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <a href="index.html" class="brand"><span class="brand__logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h1"/><path d="M14 9h4l4 4v4a1 1 0 0 1-1 1h-1"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg></span>Gra<span>Lex</span></a>
+        <p>Fast, secure and reliable logistics across Benin, Nigeria and the wider West African corridor.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/gralex_logistique/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/2290100000000" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.5.1-.7.3-.7.8-1 1.7-1 2.8.1 1.3.9 2.5 1 2.7.1.2 1.8 3 4.5 4.1 2.7 1.1 2.7.8 3.2.7.5 0 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4M12 21.5c-1.7 0-3.3-.5-4.7-1.3L3 21l1.3-4.2C3.4 15.3 3 13.7 3 12 3 7 7 3 12 3s9 4 9 9-4 9.5-9 9.5"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div><h4>Company</h4><ul class="footer__links"><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Services</h4><ul class="footer__links"><li><a href="services.html">Food Delivery</a></li><li><a href="services.html">Local Dispatch</a></li><li><a href="services.html">International Shipping</a></li><li><a href="services.html">Cross-Border</a></li><li><a href="services.html">Warehousing</a></li></ul></div>
+      <div class="footer__contact-col">
+        <h4>Get in touch</h4>
+        <ul class="footer__contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Cotonou, Littoral — Benin</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg><a href="tel:+2290100000000">+229 01 00 00 00 00</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg><a href="mailto:hello@gralexlogistique.com">hello@gralexlogistique.com</a></li>
+        </ul>
+        <form class="newsletter" aria-label="Newsletter signup"><input type="email" placeholder="Your email" aria-label="Email address" required /><button type="submit" aria-label="Subscribe"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button></form>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; <span data-year>2026</span> GraLex Logistique. All rights reserved.</p>
+      <p style="display:flex;gap:1.25rem;flex-wrap:wrap"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="contact.html">Support</a></p>
+    </div>
+  </div>
+</footer>
+<a class="wa-float" href="https://wa.me/2290100000000" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.5.1-.7.3-.7.8-1 1.7-1 2.8.1 1.3.9 2.5 1 2.7.1.2 1.8 3 4.5 4.1 2.7 1.1 2.7.8 3.2.7.5 0 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4M12 21.5c-1.7 0-3.3-.5-4.7-1.3L3 21l1.3-4.2C3.4 15.3 3 13.7 3 12 3 7 7 3 12 3s9 4 9 9-4 9.5-9 9.5"/></svg></a>
+<button class="to-top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg></button>
+<script src="js/main.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/form.js"></script>
+</body>
+</html>
