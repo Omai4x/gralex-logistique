@@ -29,6 +29,11 @@ body {
 img, picture, svg, video { display: block; max-width: 100%; }
 img { height: auto; }
 
+/* Safe default size for inline icon SVGs. Any component rule that targets
+   `.something svg` is more specific and overrides this, so sized icons are
+   unaffected — this only reins in stray icons that lack an explicit size. */
+svg { width: 1.25em; height: 1.25em; flex-shrink: 0; }
+
 a { color: inherit; text-decoration: none; }
 ul, ol { list-style: none; padding: 0; }
 button, input, select, textarea { font: inherit; color: inherit; }
