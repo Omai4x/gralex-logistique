@@ -300,6 +300,51 @@ p { color: var(--text-soft); }
 
 .nav__cta { display: flex; align-items: center; gap: var(--sp-3); }
 
+/* Language toggle */
+.lang-toggle {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: var(--r-pill);
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: blur(6px);
+}
+.lang-toggle__btn {
+  padding: 0.35rem 0.7rem;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.8);
+  border-radius: var(--r-pill);
+  line-height: 1;
+  transition: background var(--t), color var(--t);
+}
+.lang-toggle__btn.active {
+  background: #fff;
+  color: var(--navy-800);
+  box-shadow: var(--sh-xs);
+}
+.nav.scrolled .lang-toggle,
+.nav.solid .lang-toggle {
+  background: var(--gray-100);
+  border-color: var(--gray-200);
+}
+.nav.scrolled .lang-toggle__btn,
+.nav.solid .lang-toggle__btn { color: var(--ink-muted); }
+.nav.scrolled .lang-toggle__btn.active,
+.nav.solid .lang-toggle__btn.active { background: var(--grad-brand); color: #fff; }
+
+/* Mobile variant lives inside the drawer CTA block */
+.lang-toggle--mobile {
+  align-self: center;
+  margin-top: var(--sp-2);
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.2);
+}
+.lang-toggle--mobile .lang-toggle__btn { color: rgba(255,255,255,0.85); font-size: 0.9rem; padding: 0.5rem 1.1rem; }
+.lang-toggle--mobile .lang-toggle__btn.active { background: #fff; color: var(--navy-800); }
+
 /* Scrolled state */
 .nav.scrolled {
   height: 66px;

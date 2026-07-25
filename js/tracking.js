@@ -33,6 +33,8 @@
 
   const cities = ["Cotonou, BJ", "Porto-Novo, BJ", "Lagos, NG", "Parakou, BJ", "Abidjan, CI", "Accra, GH"];
   const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  const locale = window.gralexI18n && window.gralexI18n.lang === "fr" ? "fr-FR" : "en-GB";
+  const i18n = (el) => window.gralexI18n && window.gralexI18n.translateEl && window.gralexI18n.translateEl(el);
 
   function buildTimeline(activeCount) {
     timeline.innerHTML = "";
@@ -63,12 +65,13 @@
         const t = li.querySelector(".tl__time");
         if (li.dataset.state !== "pending") {
           const d = new Date(Date.now() - (activeCount - i) * 8 * 3600 * 1000);
-          t.textContent = d.toLocaleString("en-GB", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
+          t.textContent = d.toLocaleString(locale, { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
         } else {
-          t.textContent = "Pending";
+          t.textContent = window.gralexI18n && window.gralexI18n.lang === "fr" ? "En attente" : "Pending";
         }
       }, 250 + i * 320);
     });
+    i18n(timeline);
   }
 
   function hashInt(str) {
@@ -106,11 +109,12 @@
           <div><span>Tracking ID</span><strong>${id.toUpperCase()}</strong></div>
           <div><span>Route</span><strong>${from} → ${to}</strong></div>
           <div><span>Status</span><strong class="${delivered ? "ok" : ""}">${delivered ? "Delivered" : current.title}</strong></div>
-          <div><span>${delivered ? "Delivered on" : "Est. delivery"}</span><strong>${eta.toLocaleDateString("en-GB", { weekday: "short", day: "2-digit", month: "short" })}</strong></div>
+          <div><span>${delivered ? "Delivered on" : "Est. delivery"}</span><strong>${eta.toLocaleDateString(locale, { weekday: "short", day: "2-digit", month: "short" })}</strong></div>
         </div>
         <div class="track-progress"><div class="track-progress__bar" style="width:${(activeCount / 6) * 100}%"></div></div>`;
 
       result.hidden = false;
+      i18n(summary);
       buildTimeline(activeCount);
       result.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 900);

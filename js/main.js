@@ -149,6 +149,8 @@
 
   /* ---- Toast helper (exposed globally) --------------------------------- */
   window.gralexToast = function (message) {
+    // Translate dynamic toast copy when French is active
+    if (window.gralexI18n && window.gralexI18n.t) message = window.gralexI18n.t(message);
     let toast = $(".toast");
     if (!toast) {
       toast = document.createElement("div");
