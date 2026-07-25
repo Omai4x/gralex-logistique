@@ -30,21 +30,26 @@ img, svg, video, iframe { max-width: 100%; }
   .quote-aside { position: static; grid-template-columns: 1fr 1fr; display: grid; }
 }
 
+/* ---- Nav collapses to hamburger (<=1024) ------------------------------- */
+/* Collapses a little earlier than the layout so the fuller French nav
+   (longer labels) never crowds or wraps. */
+@media (max-width: 1024px) {
+  .nav__links, .nav__cta { display: none; }
+  .nav__toggle { display: flex; }
+}
+
 /* ---- Small laptop / large tablet (<=992) ------------------------------- */
 @media (max-width: 992px) {
   .hero__inner { grid-template-columns: 1fr; }
-  .hero__panel { max-width: 460px; }
+  .hero__panel { max-width: 460px; width: 100%; }
   .hero__content { max-width: 100%; }
+  .hero__track-row input { min-width: 0; }
   .contact-grid { grid-template-columns: 1fr; }
   .masonry { columns: 2; }
 }
 
 /* ---- Tablet (<=900) ---------------------------------------------------- */
 @media (max-width: 900px) {
-  /* Nav collapses to hamburger */
-  .nav__links, .nav__cta { display: none; }
-  .nav__toggle { display: flex; }
-
   .cols-3 { grid-template-columns: repeat(2, 1fr); }
   .stats { grid-template-columns: repeat(2, 1fr); gap: var(--sp-6); }
 

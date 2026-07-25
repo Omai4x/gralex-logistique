@@ -131,6 +131,7 @@ p { color: var(--text-soft); }
   font-weight: 600;
   font-size: 0.95rem;
   letter-spacing: 0.01em;
+  white-space: nowrap;
   color: var(--btn-fg);
   background: var(--btn-bg);
   border-radius: var(--r-pill);
@@ -283,6 +284,7 @@ p { color: var(--text-soft); }
   font-family: var(--font-head);
   font-weight: 500;
   font-size: 0.92rem;
+  white-space: nowrap;
   color: rgba(255,255,255,0.82);
   border-radius: var(--r-sm);
   transition: color var(--t);
@@ -774,11 +776,14 @@ p { color: var(--text-soft); }
 
 .hero__inner {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  /* minmax(0,…) prevents grid blow-out: the glass card's input can no longer
+     force a track wider than the viewport. */
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: center;
   gap: var(--sp-8);
   width: 100%;
 }
+.hero__content, .hero__panel { min-width: 0; }
 .hero__content { max-width: 640px; }
 .hero .eyebrow { color: #fff; }
 .hero .eyebrow::before { background: var(--accent); }
