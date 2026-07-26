@@ -39,6 +39,8 @@
       document.body.classList.toggle("body-lock", open);
     };
     toggle.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+    const closeBtn = $(".mobile-menu__close");
+    if (closeBtn) closeBtn.addEventListener("click", () => setMenu(false));
     $$(".mobile-menu a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") setMenu(false);

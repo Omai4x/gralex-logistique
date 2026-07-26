@@ -478,6 +478,39 @@ p { color: var(--text-soft); }
 }
 .mobile-menu.open { transform: translateX(0); }
 
+/* Close button — top-right of the drawer */
+.mobile-menu__close {
+  position: absolute;
+  top: calc(var(--nav-h) - 2.9rem);
+  right: var(--gutter);
+  width: 44px; height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+  transition: background var(--t) var(--ease), border-color var(--t) var(--ease), transform var(--t) var(--ease);
+}
+.mobile-menu__close::before,
+.mobile-menu__close::after {
+  content: "";
+  position: absolute;
+  width: 18px; height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+}
+.mobile-menu__close::before { transform: rotate(45deg); }
+.mobile-menu__close::after  { transform: rotate(-45deg); }
+.mobile-menu__close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
 /* Nav links — numbered index rows */
 .mobile-menu > a {
   position: relative;
@@ -537,21 +570,26 @@ p { color: var(--text-soft); }
 .mobile-menu.open > a {
   animation: menuItemIn 480ms var(--ease) forwards;
 }
-.mobile-menu.open > a:nth-child(1) { animation-delay: 0.08s; }
-.mobile-menu.open > a:nth-child(2) { animation-delay: 0.14s; }
-.mobile-menu.open > a:nth-child(3) { animation-delay: 0.20s; }
-.mobile-menu.open > a:nth-child(4) { animation-delay: 0.26s; }
-.mobile-menu.open > a:nth-child(5) { animation-delay: 0.32s; }
-.mobile-menu.open > a:nth-child(6) { animation-delay: 0.38s; }
-.mobile-menu.open > a:nth-child(7) { animation-delay: 0.44s; }
+.mobile-menu.open > a:nth-of-type(1) { animation-delay: 0.08s; }
+.mobile-menu.open > a:nth-of-type(2) { animation-delay: 0.14s; }
+.mobile-menu.open > a:nth-of-type(3) { animation-delay: 0.20s; }
+.mobile-menu.open > a:nth-of-type(4) { animation-delay: 0.26s; }
+.mobile-menu.open > a:nth-of-type(5) { animation-delay: 0.32s; }
+.mobile-menu.open > a:nth-of-type(6) { animation-delay: 0.38s; }
+.mobile-menu.open > a:nth-of-type(7) { animation-delay: 0.44s; }
 
 .mobile-menu__cta {
   margin-top: auto;
   padding-top: var(--sp-6);
   display: grid;
   gap: var(--sp-3);
+  justify-items: stretch;
   opacity: 0;
   transform: translateY(16px);
+}
+.mobile-menu__cta .btn {
+  width: 100%;
+  margin: 0;
 }
 .mobile-menu.open .mobile-menu__cta {
   animation: menuItemIn 520ms var(--ease) 0.5s forwards;
