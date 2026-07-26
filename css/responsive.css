@@ -30,10 +30,11 @@ img, svg, video, iframe { max-width: 100%; }
   .quote-aside { position: static; grid-template-columns: 1fr 1fr; display: grid; }
 }
 
-/* ---- Nav collapses to hamburger (<=1024) ------------------------------- */
-/* Collapses a little earlier than the layout so the fuller French nav
-   (longer labels) never crowds or wraps. */
-@media (max-width: 1024px) {
+/* ---- Nav collapses to hamburger (<=1180) ------------------------------- */
+/* Collapses well before the layout breaks so the full nav (brand + 7 links +
+   two CTA buttons, longer still in French) never crowds, wraps, or overflows
+   the bar — which pushed "Get a Quote" past the navbar's right edge. */
+@media (max-width: 1180px) {
   .nav__links, .nav__cta { display: none; }
   .nav__toggle { display: flex; }
 }
