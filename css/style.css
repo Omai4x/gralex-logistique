@@ -359,6 +359,53 @@ p { color: var(--text-soft); }
 .lang-toggle--mobile .lang-toggle__btn { color: rgba(255,255,255,0.85); font-size: 0.9rem; padding: 0.5rem 1.1rem; }
 .lang-toggle--mobile .lang-toggle__btn.active { background: #fff; color: var(--navy-800); }
 
+/* Smooth language-switch transition veil */
+.lang-veil {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-top);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(37, 99, 235, 0.28), transparent 60%),
+    linear-gradient(165deg, var(--navy-800), var(--navy-900));
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 380ms var(--ease);
+}
+.lang-veil.on { opacity: 1; pointer-events: auto; }
+.lang-veil__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.05rem;
+  transform: translateY(8px);
+  opacity: 0;
+  transition: opacity 380ms var(--ease) 60ms, transform 380ms var(--ease) 60ms;
+}
+.lang-veil.on .lang-veil__inner { opacity: 1; transform: translateY(0); }
+.lang-veil__ring {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-top-color: var(--orange-500);
+  animation: langSpin 0.7s linear infinite;
+}
+.lang-veil__mark {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+.lang-veil__mark span { color: var(--orange-500); }
+@keyframes langSpin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .lang-veil, .lang-veil__inner { transition-duration: 1ms; }
+  .lang-veil__ring { animation: none; }
+}
+
 /* Scrolled state — the bar detaches into a floating glass container */
 .nav.scrolled { padding-top: 0.7rem; }
 .nav.scrolled .nav__inner {

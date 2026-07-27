@@ -479,6 +479,53 @@
     }
   }
 
+  /* ---- Smooth switch transition --------------------------------------- */
+  var VEIL_FLAG = "gralex_lang_switching";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function makeVeil() {
+    var v = document.createElement("div");
+    v.className = "lang-veil";
+    v.setAttribute("aria-hidden", "true");
+    v.innerHTML =
+      '<div class="lang-veil__inner">' +
+        '<span class="lang-veil__ring"></span>' +
+        '<span class="lang-veil__mark">Gra<span>Lex</span></span>' +
+      '</div>';
+    return v;
+  }
+
+  // Called on toggle click: fade a veil in, then reload to re-apply cleanly.
+  function switchLang(code) {
+    localStorage.setItem(STORE, code);
+    try { sessionStorage.setItem(VEIL_FLAG, "1"); } catch (e) {}
+    if (reduce) { location.reload(); return; }
+    var v = makeVeil();
+    document.body.appendChild(v);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { v.classList.add("on"); });
+    });
+    setTimeout(function () { location.reload(); }, 440);
+  }
+
+  // On the fresh page after a switch: start covered, then fade the veil out.
+  function bootVeil() {
+    var flag = null;
+    try { flag = sessionStorage.getItem(VEIL_FLAG); sessionStorage.removeItem(VEIL_FLAG); } catch (e) {}
+    if (!flag || reduce) return;
+    var v = makeVeil();
+    v.classList.add("on");
+    document.body.appendChild(v);
+    var hide = function () {
+      requestAnimationFrame(function () {
+        v.classList.remove("on");
+        setTimeout(function () { if (v.parentNode) v.parentNode.removeChild(v); }, 460);
+      });
+    };
+    if (document.readyState === "complete") setTimeout(hide, 180);
+    else window.addEventListener("load", function () { setTimeout(hide, 180); });
+  }
+
   /* ---- Language toggle UI --------------------------------------------- */
   function makeToggle() {
     var wrap = document.createElement("div");
@@ -493,8 +540,7 @@
       b.setAttribute("aria-pressed", String(code === lang));
       b.addEventListener("click", function () {
         if (code === lang) return;
-        localStorage.setItem(STORE, code);
-        location.reload();
+        switchLang(code);
       });
       wrap.appendChild(b);
     });
@@ -521,6 +567,7 @@
   }
 
   // Apply immediately (DOM is parsed — script sits at end of body)
+  bootVeil();
   applyPage();
   injectToggles();
 
