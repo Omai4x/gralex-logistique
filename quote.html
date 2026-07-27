@@ -41,19 +41,27 @@
     <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button>
   </div>
 </header>
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu__close" type="button" aria-label="Close menu"></button>
-  <a href="index.html">Home <span>&rarr;</span></a>
-  <a href="about.html">About <span>&rarr;</span></a>
-  <a href="services.html">Services <span>&rarr;</span></a>
-  <a href="tracking.html">Track <span>&rarr;</span></a>
-  <a href="gallery.html">Gallery <span>&rarr;</span></a>
-  <a href="blog.html">Blog <span>&rarr;</span></a>
-  <a href="contact.html">Contact <span>&rarr;</span></a>
-  <div class="mobile-menu__cta">
-    <a href="quote.html" class="btn btn-accent btn-block">Get a Quote</a>
-    <a href="tracking.html" class="btn btn-ghost btn-block">Track Shipment</a>
-  </div>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="mobile-menu__scrim" data-menu-close aria-hidden="true"></div>
+  <aside class="mobile-menu__panel">
+    <div class="mobile-menu__top">
+      <span class="mobile-menu__eyebrow">Navigation</span>
+      <button class="mobile-menu__close" type="button" aria-label="Close menu" data-menu-close></button>
+    </div>
+    <nav class="mobile-menu__links">
+      <a href="index.html">Home <span>&rarr;</span></a>
+      <a href="about.html">About <span>&rarr;</span></a>
+      <a href="services.html">Services <span>&rarr;</span></a>
+      <a href="tracking.html">Track <span>&rarr;</span></a>
+      <a href="gallery.html">Gallery <span>&rarr;</span></a>
+      <a href="blog.html">Blog <span>&rarr;</span></a>
+      <a href="contact.html">Contact <span>&rarr;</span></a>
+    </nav>
+    <div class="mobile-menu__cta">
+      <a href="quote.html" class="btn btn-accent btn-block">Get a Quote</a>
+      <a href="tracking.html" class="btn btn-ghost btn-block">Track Shipment</a>
+    </div>
+  </aside>
 </div>
 <section class="pagehero">
   <div class="pagehero__img"><img src="https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1600&q=80" alt="" data-label="GraLex Logistique" /></div>

@@ -134,8 +134,8 @@ img, svg, video, iframe { max-width: 100%; }
 @media (max-height: 520px) and (orientation: landscape) {
   .hero { min-height: auto; padding-block: calc(var(--nav-h) + 1.5rem) 2.5rem; }
   .scroll-cue { display: none; }
-  .mobile-menu { padding-top: calc(var(--nav-h) + 0.5rem); }
-  .mobile-menu a { font-size: 1.1rem; padding: 0.7rem 0; }
+  .mobile-menu__links > a { font-size: 1.1rem; padding-top: 0.6rem; padding-bottom: 0.6rem; }
+  .mobile-menu__cta { padding-top: 1rem; }
 }
 
 /* ---- Coarse pointer (touch): larger tap targets, no hover tilt --------- */

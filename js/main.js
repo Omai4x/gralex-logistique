@@ -32,15 +32,26 @@
   const toggle = $(".nav__toggle");
   const menu = $(".mobile-menu");
   if (toggle && menu) {
+    let lockedY = 0;
     const setMenu = (open) => {
       toggle.classList.toggle("open", open);
       menu.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", String(open));
-      document.body.classList.toggle("body-lock", open);
+      // Scroll lock: pin the body at its current offset so nothing behind
+      // the drawer can be scrolled or dragged on touch devices.
+      if (open) {
+        lockedY = window.scrollY || window.pageYOffset || 0;
+        document.body.style.top = `-${lockedY}px`;
+        document.body.classList.add("body-lock");
+      } else if (document.body.classList.contains("body-lock")) {
+        document.body.classList.remove("body-lock");
+        document.body.style.top = "";
+        window.scrollTo(0, lockedY);
+      }
     };
     toggle.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
-    const closeBtn = $(".mobile-menu__close");
-    if (closeBtn) closeBtn.addEventListener("click", () => setMenu(false));
+    // Scrim, close button and nav links all dismiss the drawer
+    $$("[data-menu-close]").forEach((el) => el.addEventListener("click", () => setMenu(false)));
     $$(".mobile-menu a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") setMenu(false);
