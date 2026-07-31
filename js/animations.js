@@ -40,34 +40,64 @@
     }
   }
 
+  const finePointer = window.matchMedia("(pointer:fine)").matches;
+  const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
+
   /* ---- Mouse parallax on hero layers ----------------------------------- */
+  /* A single rAF loop eases the current offset toward the pointer target
+     (lerp), so layers glide instead of snapping on every mousemove event. */
   const stage = $("[data-mouse-stage]");
-  if (stage && !prefersReduced && window.matchMedia("(pointer:fine)").matches) {
+  if (stage && !prefersReduced && finePointer) {
     const layers = $$("[data-depth]", stage);
-    stage.addEventListener("mousemove", (e) => {
-      const r = stage.getBoundingClientRect();
-      const cx = (e.clientX - r.left) / r.width - 0.5;
-      const cy = (e.clientY - r.top) / r.height - 0.5;
+    let tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+
+    const loop = () => {
+      cx += (tx - cx) * 0.09;
+      cy += (ty - cy) * 0.09;
       layers.forEach((layer) => {
         const depth = parseFloat(layer.dataset.depth);
-        layer.style.transform = `translate3d(${(-cx * depth * 40).toFixed(1)}px, ${(-cy * depth * 40).toFixed(1)}px, 0)`;
+        layer.style.transform =
+          `translate3d(${(-cx * depth * 40).toFixed(2)}px, ${(-cy * depth * 40).toFixed(2)}px, 0)`;
       });
+      if (Math.abs(tx - cx) > 0.0004 || Math.abs(ty - cy) > 0.0004) {
+        raf = requestAnimationFrame(loop);
+      } else {
+        raf = null;
+      }
+    };
+    const kick = () => { if (!raf) raf = requestAnimationFrame(loop); };
+
+    stage.addEventListener("mousemove", (e) => {
+      const r = stage.getBoundingClientRect();
+      tx = (e.clientX - r.left) / r.width - 0.5;
+      ty = (e.clientY - r.top) / r.height - 0.5;
+      kick();
     });
-    stage.addEventListener("mouseleave", () => {
-      layers.forEach((l) => (l.style.transform = "translate3d(0,0,0)"));
-    });
+    stage.addEventListener("mouseleave", () => { tx = 0; ty = 0; kick(); });
   }
 
   /* ---- Card 3D tilt ---------------------------------------------------- */
-  if (!prefersReduced && window.matchMedia("(pointer:fine)").matches) {
+  /* Throttle transform writes to one per frame; ease the reset on leave. */
+  if (!prefersReduced && finePointer) {
     $$("[data-tilt]").forEach((card) => {
+      let px = 0, py = 0, rafId = null;
+      const write = () => {
+        card.style.transform =
+          `perspective(900px) rotateY(${(px * 8).toFixed(2)}deg) rotateX(${(-py * 8).toFixed(2)}deg) translateY(-8px)`;
+        rafId = null;
+      };
+      card.addEventListener("mouseenter", () => { card.style.transition = "transform 120ms " + EASE; });
       card.addEventListener("mousemove", (e) => {
         const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        card.style.transform = `perspective(900px) rotateY(${(px * 8).toFixed(2)}deg) rotateX(${(-py * 8).toFixed(2)}deg) translateY(-8px)`;
+        px = (e.clientX - r.left) / r.width - 0.5;
+        py = (e.clientY - r.top) / r.height - 0.5;
+        if (!rafId) rafId = requestAnimationFrame(write);
       });
-      card.addEventListener("mouseleave", () => (card.style.transform = ""));
+      card.addEventListener("mouseleave", () => {
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        card.style.transition = "transform 600ms " + EASE;
+        card.style.transform = "";
+      });
     });
   }
 

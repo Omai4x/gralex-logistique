@@ -513,6 +513,10 @@
     var flag = null;
     try { flag = sessionStorage.getItem(VEIL_FLAG); sessionStorage.removeItem(VEIL_FLAG); } catch (e) {}
     if (!flag || reduce) return;
+    // A language switch already shows this veil — suppress the page loader so
+    // the user doesn't see two identical loaders stacked on the fresh page.
+    var pageLoader = document.querySelector(".loader");
+    if (pageLoader) { pageLoader.classList.add("hidden"); pageLoader.style.display = "none"; }
     var v = makeVeil();
     v.classList.add("on");
     document.body.appendChild(v);

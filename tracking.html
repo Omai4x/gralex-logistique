@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<script>(function(){try{var t=localStorage.getItem("gralex-theme");if(!t){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Track Shipment — GraLex Logistique</title>
 <meta name="description" content="Track your GraLex shipment in real time with live status updates from pickup to delivery." />
-<meta name="theme-color" content="#0f172a" />
+<meta name="theme-color" content="#0e0e0e" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Track Shipment — GraLex Logistique" />
 <meta property="og:description" content="Track your GraLex shipment in real time with live status updates from pickup to delivery." />
@@ -77,10 +78,13 @@
   <div class="container">
     <div class="track-panel" data-reveal="up">
       <form id="track-form" class="track-form" autocomplete="off">
-        <input type="text" id="track-input" placeholder="Enter tracking number, e.g. GLX-4821-BN" aria-label="Tracking number" />
+        <input type="text" id="track-input" placeholder="Enter tracking number, e.g. GLX-4821-BN"
+               aria-label="Tracking number" autocapitalize="characters" spellcheck="false"
+               maxlength="13" pattern="GLX-[A-Za-z0-9]{3,6}-[A-Za-z]{2}"
+               title="Format: GLX-XXXX-CC (e.g. GLX-4821-BN)" aria-describedby="track-hint" />
         <button type="submit" class="btn btn-primary btn-lg">Track</button>
       </form>
-      <p class="track-hint">Don't have one handy? Try a sample: <code data-sample="GLX-4821-BN">GLX-4821-BN</code> <code data-sample="GLX-7code-NG">GLX-7CODE-NG</code></p>
+      <p class="track-hint" id="track-hint">Format: <strong>GLX-XXXX-CC</strong> — try a sample: <code data-sample="GLX-4821-BN">GLX-4821-BN</code> <code data-sample="GLX-93KD-NG">GLX-93KD-NG</code></p>
 
       <div id="track-result" hidden>
         <div id="track-summary"></div>
@@ -141,6 +145,7 @@
 <script src="js/main.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/animations.js"></script>
+<script src="js/shipments-data.js"></script>
 <script src="js/tracking.js"></script>
 </body>
 </html>

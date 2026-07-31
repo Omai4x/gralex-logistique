@@ -86,7 +86,7 @@
 
       if (!ok) {
         firstBad && firstBad.focus();
-        window.gralexToast && window.gralexToast("Please fix the highlighted fields.");
+        window.gralexToast && window.gralexToast("Please fix the highlighted fields.", "error");
         return;
       }
 
@@ -103,7 +103,7 @@
           btn.disabled = false;
         }
         const msg = form.dataset.success || "Thank you! Our team will be in touch shortly.";
-        window.gralexToast && window.gralexToast(msg);
+        window.gralexToast && window.gralexToast(msg, "success");
         form.reset();
 
         const success = form.querySelector(".form-success");

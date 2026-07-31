@@ -1,6 +1,8 @@
 /* ==========================================================================
    GraLex Logistique — tracking.js
-   Simulated shipment tracking with an animated, sequential timeline.
+   Data-driven shipment tracking with an animated, sequential timeline.
+   Records are looked up via fetchShipment() (currently the local mock DB in
+   shipments-data.js) — swap that one function for your real API later.
    ========================================================================== */
 (function () {
   "use strict";
@@ -31,18 +33,70 @@
     check: '<path d="M20 6 9 17l-5-5"/>',
   };
 
-  const cities = ["Cotonou, BJ", "Porto-Novo, BJ", "Lagos, NG", "Parakou, BJ", "Abidjan, CI", "Accra, GH"];
-  const rand = (arr) => arr[Math.floor(Math.random() * arr.length)];
-  const locale = window.gralexI18n && window.gralexI18n.lang === "fr" ? "fr-FR" : "en-GB";
+  // Valid GraLex tracking-ID shape: GLX-<3–6 alphanumerics>-<2-letter code>
+  // e.g. GLX-4821-BN, GLX-93KD-NG
+  const ID_RE = /^GLX-[A-Z0-9]{3,6}-[A-Z]{2}$/;
+  const isFr = () => window.gralexI18n && window.gralexI18n.lang === "fr";
+
+  const locale = () => (isFr() ? "fr-FR" : "en-GB");
   const i18n = (el) => window.gralexI18n && window.gralexI18n.translateEl && window.gralexI18n.translateEl(el);
 
-  function buildTimeline(activeCount) {
+  // Pull the 2-letter country code out of a "City, CC" location string
+  const countryOf = (loc) => {
+    const m = /,\s*([A-Za-z]{2})\s*$/.exec(loc || "");
+    return m ? m[1].toUpperCase() : null;
+  };
+
+  // Cross-border shipments clear customs; in-country ones don't. Honour an
+  // explicit `crossBorder` flag if the record sets one, otherwise infer it
+  // from the origin/destination country codes.
+  const isCrossBorder = (s) => {
+    if (typeof s.crossBorder === "boolean") return s.crossBorder;
+    const a = countryOf(s.origin), b = countryOf(s.destination);
+    return a && b ? a !== b : false;
+  };
+
+  // The step sequence for a shipment: the customs stage only exists on
+  // cross-border deliveries.
+  const stepsFor = (s) => STEPS.filter((st) => st.key !== "customs" || isCrossBorder(s));
+
+  const fmtDateTime = (iso) =>
+    new Date(iso).toLocaleString(locale(), { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
+  const fmtDate = (iso) =>
+    new Date(iso).toLocaleDateString(locale(), { weekday: "short", day: "2-digit", month: "short" });
+
+  /* ---- Data layer -------------------------------------------------------
+     Looks a shipment up by ID. Today it reads the local mock database in
+     shipments-data.js; later, point this at your real backend without
+     touching the rest of the file, e.g.:
+       return fetch(`/api/track/${encodeURIComponent(id)}`)
+         .then((r) => (r.ok ? r.json() : null));
+     Resolves to the record (with `id` attached) or null when not found. */
+  function fetchShipment(id) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const db = window.GRALEX_SHIPMENTS || {};
+        resolve(db[id] ? Object.assign({ id: id }, db[id]) : null);
+      }, 700); // simulated network latency
+    });
+  }
+
+  function buildTimeline(shipment, steps) {
+    // Index the real events by their step key
+    const evByStep = {};
+    shipment.events.forEach((ev) => (evByStep[ev.step] = ev));
+    const lastStep = shipment.events[shipment.events.length - 1].step;
+    const currentIndex = steps.findIndex((s) => s.key === lastStep);
+    const delivered = lastStep === "delivered";
+    const pendingLabel = isFr() ? "En attente" : "Pending";
+
     timeline.innerHTML = "";
-    STEPS.forEach((step, i) => {
+    steps.forEach((step, i) => {
+      const ev = evByStep[step.key];
+      const state = i < currentIndex ? "done" : i === currentIndex ? (delivered ? "done" : "current") : "pending";
       const li = document.createElement("li");
       li.className = "tl__step";
       li.style.setProperty("--i", i);
-      const state = i < activeCount ? "done" : i === activeCount ? "current" : "pending";
       li.dataset.state = state;
       li.innerHTML = `
         <div class="tl__marker">
@@ -51,79 +105,143 @@
         <div class="tl__body">
           <div class="tl__head">
             <h4>${step.title}</h4>
-            <span class="tl__time"></span>
+            <span class="tl__time">${ev ? fmtDateTime(ev.time) : pendingLabel}</span>
           </div>
           <p>${step.desc}</p>
+          ${ev && ev.location ? `<span class="tl__loc">${ev.location}</span>` : ""}
         </div>`;
       timeline.appendChild(li);
     });
     // reveal steps sequentially
-    const steps = [...timeline.children];
-    steps.forEach((li, i) => {
-      setTimeout(() => {
-        li.classList.add("in");
-        const t = li.querySelector(".tl__time");
-        if (li.dataset.state !== "pending") {
-          const d = new Date(Date.now() - (activeCount - i) * 8 * 3600 * 1000);
-          t.textContent = d.toLocaleString(locale, { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
-        } else {
-          t.textContent = window.gralexI18n && window.gralexI18n.lang === "fr" ? "En attente" : "Pending";
-        }
-      }, 250 + i * 320);
+    [...timeline.children].forEach((li, i) => {
+      setTimeout(() => li.classList.add("in"), 200 + i * 300);
     });
     i18n(timeline);
   }
 
-  function hashInt(str) {
-    let h = 0;
-    for (let i = 0; i < str.length; i++) h = (h * 31 + str.charCodeAt(i)) >>> 0;
-    return h;
+  function flagInvalid(msg) {
+    input.classList.add("invalid");
+    input.setAttribute("aria-invalid", "true");
+    input.focus();
+    window.gralexToast && window.gralexToast(msg, "error");
   }
+
+  // Clear the error state once the user edits the field again
+  input.addEventListener("input", () => {
+    input.classList.remove("invalid");
+    input.removeAttribute("aria-invalid");
+  });
+
+  // Sample chips prefill a valid ID and run the lookup
+  document.querySelectorAll("[data-sample]").forEach((el) => {
+    el.style.cursor = "pointer";
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    const use = () => {
+      input.value = el.dataset.sample;
+      input.classList.remove("invalid");
+      runTracking();
+    };
+    el.addEventListener("click", use);
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); use(); }
+    });
+  });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const id = input.value.trim();
+    runTracking();
+  });
+
+  function runTracking() {
+    const id = input.value.trim().toUpperCase();
+    // Reflect the normalised value so the user sees what we validate
+    if (input.value !== id) input.value = id;
+
     if (!id) {
-      input.focus();
-      window.gralexToast && window.gralexToast("Enter a tracking number to continue.");
+      flagInvalid(isFr() ? "Entrez un numéro de suivi pour continuer." : "Enter a tracking number to continue.");
       return;
     }
+    if (!ID_RE.test(id)) {
+      flagInvalid(isFr()
+        ? "Numéro invalide. Format attendu : GLX-XXXX-CC (ex. GLX-4821-BN)."
+        : "Invalid tracking number. Expected format: GLX-XXXX-CC (e.g. GLX-4821-BN).");
+      return;
+    }
+    input.classList.remove("invalid");
+    input.removeAttribute("aria-invalid");
+
     btn.classList.add("loading");
     btn.disabled = true;
 
-    setTimeout(() => {
+    fetchShipment(id).then((shipment) => {
       btn.classList.remove("loading");
       btn.disabled = false;
 
-      // Deterministic pseudo-status from the tracking id
-      const seed = hashInt(id.toUpperCase());
-      const activeCount = (seed % 6) + 1; // 1..6
-      const from = cities[seed % cities.length];
-      const to = cities[(seed + 3) % cities.length];
-      const eta = new Date(Date.now() + (6 - activeCount) * 26 * 3600 * 1000);
-      const current = STEPS[Math.min(activeCount, STEPS.length - 1)];
-      const delivered = activeCount >= 6;
-
-      summary.innerHTML = `
-        <div class="track-summary__grid">
-          <div><span>Tracking ID</span><strong>${id.toUpperCase()}</strong></div>
-          <div><span>Route</span><strong>${from} → ${to}</strong></div>
-          <div><span>Status</span><strong class="${delivered ? "ok" : ""}">${delivered ? "Delivered" : current.title}</strong></div>
-          <div><span>${delivered ? "Delivered on" : "Est. delivery"}</span><strong>${eta.toLocaleDateString(locale, { weekday: "short", day: "2-digit", month: "short" })}</strong></div>
-        </div>
-        <div class="track-progress"><div class="track-progress__bar" style="width:${(activeCount / 6) * 100}%"></div></div>`;
-
+      if (!shipment) {
+        renderNotFound(id);
+        window.gralexToast && window.gralexToast(
+          isFr() ? `Aucun envoi trouvé pour ${id}.` : `No shipment found for ${id}.`, "error");
+      } else {
+        renderShipment(shipment);
+      }
       result.hidden = false;
-      i18n(summary);
-      buildTimeline(activeCount);
       result.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 900);
-  });
+    });
+  }
+
+  function renderShipment(shipment) {
+    const steps = stepsFor(shipment);
+    const crossBorder = isCrossBorder(shipment);
+    const lastStep = shipment.events[shipment.events.length - 1].step;
+    const currentIndex = steps.findIndex((s) => s.key === lastStep);
+    const delivered = lastStep === "delivered";
+    const progress = (shipment.events.length / steps.length) * 100;
+    const statusLabel = delivered ? (isFr() ? "Livré" : "Delivered") : steps[currentIndex].title;
+    const typeLabel = crossBorder
+      ? (isFr() ? "Transfrontalier" : "Cross-border")
+      : (isFr() ? "National" : "Domestic");
+    const etaLabel = delivered ? (isFr() ? "Livré le" : "Delivered on") : (isFr() ? "Livraison estimée" : "Est. delivery");
+    const etaValue = delivered
+      ? fmtDate(shipment.events[shipment.events.length - 1].time)
+      : shipment.estDelivery ? fmtDate(shipment.estDelivery) : "—";
+
+    summary.innerHTML = `
+      <div class="track-summary__grid">
+        <div><span>Tracking ID</span><strong>${shipment.id}</strong></div>
+        <div><span>Service</span><strong>${shipment.service}</strong></div>
+        <div><span>Type</span><strong>${typeLabel}</strong></div>
+        <div><span>Route</span><strong>${shipment.origin} &rarr; ${shipment.destination}</strong></div>
+        <div><span>Recipient</span><strong>${shipment.recipient}</strong></div>
+        <div><span>Weight</span><strong>${shipment.weight}</strong></div>
+        <div><span>Status</span><strong class="${delivered ? "ok" : ""}">${statusLabel}</strong></div>
+        <div><span>${etaLabel}</span><strong>${etaValue}</strong></div>
+      </div>
+      <div class="track-progress"><div class="track-progress__bar" style="width:${progress}%"></div></div>`;
+
+    i18n(summary);
+    buildTimeline(shipment, steps);
+  }
+
+  function renderNotFound(id) {
+    timeline.innerHTML = "";
+    summary.innerHTML = `
+      <div class="track-notfound">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v3"/><path d="M11 14h.01"/>
+        </svg>
+        <h3>${isFr() ? "Aucun envoi trouvé" : "No shipment found"}</h3>
+        <p>${isFr()
+          ? `Nous n'avons trouvé aucun envoi pour <strong>${id}</strong>. Vérifiez le numéro ou contactez notre équipe.`
+          : `We couldn't find a shipment for <strong>${id}</strong>. Double-check the number or contact our team.`}</p>
+        <a href="contact.html" class="btn btn-outline">${isFr() ? "Contacter le support" : "Contact support"}</a>
+      </div>`;
+  }
 
   // Prefill from ?id= query param (deep links from other pages)
   const params = new URLSearchParams(location.search);
   if (params.get("id")) {
     input.value = params.get("id");
-    form.dispatchEvent(new Event("submit"));
+    runTracking();
   }
 })();

@@ -4,41 +4,50 @@
    ========================================================================== */
 
 :root {
-  /* ---- Brand palette ---------------------------------------------------- */
-  --navy-900: #0b1120;
-  --navy-800: #0f172a; /* primary */
-  --navy-700: #1e293b;
-  --navy-600: #334155;
+  /* ---- Brand palette ----------------------------------------------------
+     Sourced from the official GraLex Logistique identity: carbon black + gold.
+     Legacy token names (navy-*, blue-*, orange-*) are retained but remapped
+     to the true brand hues so every component inherits the new scheme. */
+  --navy-900: #050505; /* deepest carbon */
+  --navy-800: #0e0e0e; /* primary — brand black */
+  --navy-700: #1a1a1a;
+  --navy-600: #2b2b2b;
 
-  --blue-600: #2563eb; /* electric blue */
-  --blue-500: #3b82f6;
-  --blue-400: #60a5fa;
-  --blue-050: #eff6ff;
+  --blue-600: #f5c518; /* brand gold (primary accent) */
+  --blue-500: #ffce22;
+  --blue-400: #ffdd57;
+  --blue-050: #fdf7dc; /* soft cream surface / gold tint */
 
-  --orange-600: #ea580c;
-  --orange-500: #f97316; /* accent */
-  --orange-400: #fb923c;
+  --orange-600: #c98a00; /* deep amber */
+  --orange-500: #e0a400; /* secondary accent — burnished gold */
+  --orange-400: #f3ba1f;
 
-  --green-600: #16a34a; /* success */
+  --green-600: #16a34a; /* success (tracking / confirmations) */
   --green-500: #22c55e;
 
   --white: #ffffff;
-  --gray-050: #f8fafc; /* light gray surface */
-  --gray-100: #f1f5f9;
-  --gray-200: #e2e8f0;
-  --gray-300: #cbd5e1;
-  --gray-400: #94a3b8;
-  --gray-500: #64748b;
-  --gray-600: #475569;
+  --gray-050: #f8f8f6; /* warm light gray surface */
+  --gray-100: #f1f1ee;
+  --gray-200: #e4e4df;
+  --gray-300: #c9c9c1;
+  --gray-400: #9a9a90;
+  --gray-500: #6b6b62;
+  --gray-600: #4a4a43;
 
-  --ink: #111827; /* body text */
-  --ink-soft: #334155;
-  --ink-muted: #64748b;
+  --ink: #141414; /* body text — near black */
+  --ink-soft: #333330;
+  --ink-muted: #6b6b62;
 
-  /* ---- Semantic tokens -------------------------------------------------- */
-  --bg: var(--white);
-  --bg-alt: var(--gray-050);
-  --surface: var(--white);
+  --gold: #f5c518; /* explicit brand alias */
+  --on-brand: #0e0e0e; /* text/icons that sit on gold surfaces */
+
+  /* ---- Semantic tokens (light theme) ------------------------------------
+     Surfaces are warm off-whites rather than pure #fff — pure white beside
+     gold glares and hurts legibility, so we soften it a touch. */
+  color-scheme: light;
+  --bg: #f6f5f0;       /* warm off-white page */
+  --bg-alt: #efeee7;   /* alternating section */
+  --surface: #fdfcf8;  /* card surface — gentle warm white */
   --text: var(--ink);
   --text-soft: var(--ink-soft);
   --text-muted: var(--ink-muted);
@@ -46,14 +55,17 @@
   --brand: var(--blue-600);
   --brand-ink: var(--navy-800);
   --accent: var(--orange-500);
+  --tint-gold: #fbf3d6; /* soft gold-tinted surface */
+  --tint-warm: #fdefe0; /* soft amber-tinted surface */
+  --tint-green: #e7f6ec; /* soft success-tinted surface */
 
   /* ---- Gradients -------------------------------------------------------- */
-  --grad-brand: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  --grad-sunset: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-  --grad-hero: linear-gradient(120deg, rgba(11,17,32,0.92) 0%, rgba(15,23,42,0.72) 45%, rgba(37,99,235,0.35) 100%);
-  --grad-mesh: radial-gradient(1200px 600px at 10% -10%, rgba(37,99,235,0.25), transparent 60%),
-               radial-gradient(900px 500px at 90% 0%, rgba(249,115,22,0.18), transparent 55%),
-               radial-gradient(1000px 700px at 50% 120%, rgba(22,163,74,0.14), transparent 60%);
+  --grad-brand: linear-gradient(135deg, #f5c518 0%, #e0a400 100%);
+  --grad-sunset: linear-gradient(135deg, #ffd75e 0%, #e0a400 100%);
+  --grad-hero: linear-gradient(120deg, rgba(6,6,6,0.94) 0%, rgba(14,14,14,0.78) 45%, rgba(245,197,24,0.30) 100%);
+  --grad-mesh: radial-gradient(1200px 600px at 10% -10%, rgba(245,197,24,0.26), transparent 60%),
+               radial-gradient(900px 500px at 90% 0%, rgba(224,164,0,0.20), transparent 55%),
+               radial-gradient(1000px 700px at 50% 120%, rgba(245,197,24,0.14), transparent 60%);
   --grad-glass: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
 
   /* ---- Typography ------------------------------------------------------- */
@@ -104,9 +116,9 @@
   --sh-sm: 0 2px 8px rgba(15,23,42,0.08);
   --sh-md: 0 10px 30px rgba(15,23,42,0.10);
   --sh-lg: 0 24px 60px rgba(15,23,42,0.16);
-  --sh-brand: 0 18px 40px rgba(37,99,235,0.30);
-  --sh-accent: 0 18px 40px rgba(249,115,22,0.30);
-  --ring: 0 0 0 4px rgba(37,99,235,0.18);
+  --sh-brand: 0 18px 40px rgba(245,197,24,0.35);
+  --sh-accent: 0 18px 40px rgba(224,164,0,0.32);
+  --ring: 0 0 0 4px rgba(245,197,24,0.22);
 
   /* ---- Motion ----------------------------------------------------------- */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -120,4 +132,53 @@
   --z-overlay: 200;
   --z-loader: 900;
   --z-top: 999;
+}
+
+/* ==========================================================================
+   Dark theme — the brand's native carbon-black + gold world.
+   Activated by data-theme="dark" on <html>. Only surface/text/border tokens
+   flip; the gold brand accents stay identical in both modes.
+   ========================================================================== */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Surfaces & text */
+  --bg: #0a0a0a;
+  --bg-alt: #111110;
+  --surface: #171613;
+  --ink: #ededea;       /* softened white — never pure #fff on dark */
+  --ink-soft: #c6c5be;
+  --ink-muted: #8d8c83;
+  --text: var(--ink);
+  --text-soft: var(--ink-soft);
+  --text-muted: var(--ink-muted);
+  --border: #292824;
+  --brand-ink: #f5f4f0; /* headings / strong text — bright light on dark */
+
+  /* Remap light-scale tokens used directly by components */
+  --gray-050: #111110;
+  --gray-100: #1a1917;
+  --gray-200: #292824; /* borders */
+  --gray-500: #9a998f; /* was dark muted text → now light */
+  --gray-600: #b8b7ae;
+
+  --blue-050: #201b06;  /* gold-tinted surface → deep amber */
+  --tint-gold: #221d08;
+  --tint-warm: #241b0c;
+  --tint-green: #10241a;
+
+  /* Elevations read as depth, not drop-shadow, on black */
+  --sh-xs: 0 1px 2px rgba(0,0,0,0.5);
+  --sh-sm: 0 2px 10px rgba(0,0,0,0.55);
+  --sh-md: 0 12px 34px rgba(0,0,0,0.6);
+  --sh-lg: 0 28px 64px rgba(0,0,0,0.66);
+}
+
+/* Smooth the flip between themes */
+:root, :root[data-theme="dark"] {
+  transition: none;
+}
+body, .nav, .card, .surface, .btn, input, textarea, select,
+.faq__item, .contact-card, .value, .track-panel, .quote-form {
+  transition: background-color var(--t) var(--ease), border-color var(--t) var(--ease), color var(--t) var(--ease);
 }
